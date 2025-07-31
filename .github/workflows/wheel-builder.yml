@@ -168,6 +168,9 @@ jobs:
           echo $PY_LIMITED_API
           ls cryptography*.tar.gz
 
+          /opt/python/${{ matrix.PYTHON.VERSION }}/bin/python -VV
+          /opt/python/${{ matrix.PYTHON.VERSION }}/bin/python -c "import platform; print(platform.platform())"
+
           OPENSSL_DIR="/opt/pyca/cryptography/openssl" \
               OPENSSL_STATIC=1 \
               RUST_LOG=maturin=debug \
