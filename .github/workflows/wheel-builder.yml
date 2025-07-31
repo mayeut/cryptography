@@ -409,7 +409,7 @@ jobs:
           uv build --python='${{ steps.setup-python.outputs.python-path }}' -v --wheel --require-hashes --build-constraint=$BUILD_REQUIREMENTS_PATH cryptography*.tar.gz $PY_LIMITED_API -o wheelhouse/
         shell: bash
 
-      - run: uv venv
+      - run: uv venv --python='${{ steps.setup-python.outputs.python-path }}'
       - run: uv pip install --require-hashes -r "${BUILD_REQUIREMENTS_PATH}"
         shell: bash
       - run: uv pip install cryptography --no-index -f wheelhouse/
