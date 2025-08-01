@@ -170,6 +170,7 @@ jobs:
 
           /opt/python/${{ matrix.PYTHON.VERSION }}/bin/python -VV
           file -L /opt/python/${{ matrix.PYTHON.VERSION }}/bin/python
+          rustc -vV
 
           OPENSSL_DIR="/opt/pyca/cryptography/openssl" \
               OPENSSL_STATIC=1 \
