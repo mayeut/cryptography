@@ -175,7 +175,7 @@ jobs:
           OPENSSL_DIR="/opt/pyca/cryptography/openssl" \
               OPENSSL_STATIC=1 \
               RUST_LOG=maturin=debug \
-              uv build -v --python=/opt/python/${{ matrix.PYTHON.VERSION }}/bin/python --wheel --require-hashes --build-constraint=$BUILD_REQUIREMENTS_PATH $PY_LIMITED_API cryptography*.tar.gz -o tmpwheelhouse/
+              manylinux-entrypoint uv build -v --python=/opt/python/${{ matrix.PYTHON.VERSION }}/bin/python --wheel --require-hashes --build-constraint=$BUILD_REQUIREMENTS_PATH $PY_LIMITED_API cryptography*.tar.gz -o tmpwheelhouse/
         env:
           RUSTUP_HOME: /root/.rustup
       - run: auditwheel repair --plat ${{ matrix.MANYLINUX.NAME }} tmpwheelhouse/cryptography*.whl -w wheelhouse/
